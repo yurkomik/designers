@@ -1,0 +1,9 @@
+install schadcn/ui:
+shadcn@latest add --all
+
+
+template kits: https://awesome-shadcn-ui.vercel.app/
+https://21st.dev/?tab=components&sort=recommended
+https://magicui.design/docs/components/
+https://ui.aceternity.com/components/
+https://www.cult-ui.com/docs/components/sortable-list

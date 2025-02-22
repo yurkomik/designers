@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Design System
 
-## Getting Started
+A modern design system built with Next.js, Radix UI, and Storybook.
 
-First, run the development server:
+## 🚀 Quick Start for Designers
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation (Mac Only)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Install Cursor**
+   - Download Cursor from [cursor.sh](https://cursor.sh)
+   - Open the downloaded file
+   - Drag Cursor to your Applications folder
+   - Open Cursor
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Run Setup Script**
+   - Download our setup script: [setup.sh](setup.sh)
+   - Open Cursor's terminal (Cmd + J)
+   - Drag the setup.sh file into the terminal
+   - Press Enter
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+That's it! The script will:
+- Install all required tools (Homebrew, Node.js, Git)
+- Set up the project
+- Start the development environment
 
-## Learn More
+### 📚 What's Included
 
-To learn more about Next.js, take a look at the following resources:
+- **Theme Editor**: Customize colors, typography, spacing, and effects
+- **Component Library**: Browse and test components in Storybook
+- **Design Tokens**: Explore subatomic design elements
+- **Documentation**: Access comprehensive guides and examples
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🎨 For Designers
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- All components are organized by atomic design principles
+- Live preview of changes in both the main app and Storybook
+- Interactive documentation with usage examples
+- Theme customization tools
 
-## Deploy on Vercel
+### 💡 Need Help?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Check our [Wiki](your-wiki-url)
+- Contact the development team
+- Join our Slack channel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠 Development
+
+### Tech Stack
+- Next.js 15
+- React 19
+- Radix UI
+- Tailwind CSS
+- Storybook 8
+
+### Available Scripts
+
+- `npm run dev` - Start development environment
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run storybook` - Start Storybook separately
+
+## 📝 License
+
+[MIT](LICENSE)
