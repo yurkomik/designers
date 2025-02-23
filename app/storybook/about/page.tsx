@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Palette, Component, Layers, GitBranch, Zap } from "lucide-react"
+import { ArrowRight, Palette, Component, Layers, GitBranch, Zap, BookOpen, Download } from "lucide-react"
 import Link from "next/link"
 
 export default function StoryBookAbout() {
@@ -101,18 +101,71 @@ export default function StoryBookAbout() {
           </Card>
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <Link 
-            href="https://storybook.js.org/docs/get-started/install"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button size="lg" className="gap-2">
-              Get Started with Storybook
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </Link>
+        {/* Registry Section */}
+        <div className="px-4">
+          <Card className="max-w-4xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Comprehensive Component Registry</CardTitle>
+              <CardDescription>
+                Explore the complete shadcn/ui Storybook registry with ready-to-use stories for all components
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <p className="text-muted-foreground">
+                Access a comprehensive collection of pre-built Storybook stories for every shadcn/ui component, 
+                including Accordions, Buttons, Cards, Dialogs, and many more. Each component comes with 
+                interactive documentation and live examples.
+              </p>
+              <div className="flex justify-center">
+                <Link 
+                  href="https://registry.lloydrichards.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="lg" className="gap-2">
+                    <BookOpen className="h-4 w-4" />
+                    Browse Component Registry
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Installation Section */}
+        <div className="px-4">
+          <Card className="max-w-4xl mx-auto">
+            <CardHeader>
+              <CardTitle className="text-2xl">Quick Installation</CardTitle>
+              <CardDescription>
+                Get started with Storybook in your project in minutes
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <Link 
+                  href="https://storybook.js.org/docs/get-started/install"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="gap-2 w-full md:w-auto">
+                    <Download className="h-4 w-4" />
+                    Installation Guide
+                  </Button>
+                </Link>
+                <Link 
+                  href="https://storybook.js.org/docs/get-started/install"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="lg" className="gap-2 w-full md:w-auto">
+                    <BookOpen className="h-4 w-4" />
+                    View Documentation
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

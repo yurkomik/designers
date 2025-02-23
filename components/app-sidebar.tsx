@@ -13,7 +13,7 @@ import {
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
+import { NavResources } from "@/components/nav-resources"
 import { NavUser } from "@/components/nav-user"
 import { TeamSwitcher } from "@/components/team-switcher"
 import {
@@ -194,10 +194,10 @@ const data = {
       ],
     },
   ],
-  projects: [
+  resources: [
     {
-      name: "Design Engineering",
-      url: "#",
+      name: "UI Libraries",
+      url: "/resources/ui-libraries",
       icon: Settings2,
     },
   ],
@@ -211,7 +211,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavResources projects={data.resources} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

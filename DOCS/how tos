@@ -2,8 +2,59 @@ install schadcn/ui:
 shadcn@latest add --all
 
 
-template kits: https://awesome-shadcn-ui.vercel.app/
+template kits built specifically for shadcn/ui: 
+https://www.cult-ui.com/docs/components/sortable-list   
+https://motion-primitives.com/docs/morphing-popover  - animations for shadcn/ui
+https://motion-primitives.com/docs/morphing-dialog
+https://originui.com/select 
+https://ui.aceternity.com/components/  
 https://21st.dev/?tab=components&sort=recommended
-https://magicui.design/docs/components/
-https://ui.aceternity.com/components/
-https://www.cult-ui.com/docs/components/sortable-list
+https://magicui.design/docs/components/ 
+https://ui.stackzero.co/docs/components/price-format/sale - ecommerce components
+https://skiper-ui.com/docs/components/text-effect-flipper - modern text effects and animations
+https://skiper-ui.com/docs/components/animated-number - animated number 
+
+
+Other lists of components:
+https://awesome-shadcn-ui.vercel.app/
+
+
+
+libraries: 
+https://tiptap.dev/docs/content-ai/getting-started/overview - AI text editor
+https://shadcn-minimal-tiptap.vercel.app/ - text editor- minimalistic
+https://www.hover.dev/components/three-d - 3D components and 100+ other great components
+https://ui.indie-starter.dev/form-builder - form builder 
+https://www.simple-ai.dev/docs - AI chatbot and AI related components
+https://shadcn-extension.vercel.app/docs/smart-datetime-input - smart datetime input
+https://shadcn-extension.vercel.app/docs/tags-input - tags input
+https://shadcn-form-build.vercel.app/components/signature-input - signature input 
+https://shadcn-form-build.vercel.app/components/location-input - location input (country and region)
+https://icon-picker.alan-courtois.fr/ - icon picker 
+https://github.com/camwebby/shadcn-react-number-scrubber - number scrubber  
+https://www.sadmn.com/blog/shadcn-table - complex table component with filters and sorting (server side and client side)
+
+https://linked-chart.vercel.app/ - nice charts Drag on the chart to filter the table
+https://github.com/NiazMorshed2007/shadcn-address-autocomplete - address autocomplete 
+https://shadcn-calendar-heatmap.vercel.app/ - calendar heatmap 
+https://shadcn-country-dropdown.vercel.app/ - country dropdown 
+
+
+
+Alternative UI libraries:
+https://v5.daisyui.com/components/timeline/
+https://www.heroui.com/docs/components/date-picker
+https://www.heroui.com/docs/components/date-range-picker
+https://www.heroui.com/docs/components/skeleton
+https://www.heroui.com/docs/components/pagination
+https://www.uilabs.dev/
+https://gluestack.io/ 
+https://flyonui.com/ 
+
+
+other useful links:
+https://v5.daisyui.com/theme-generator/   - great for style brainstorming 
+https://zippystarter.com/tools/shadcn-ui-theme-generator
+https://ui.ewgenius.me/shadcn-radix-colors - theme generator for shadcn/ui
+https://www.tilebit.io/components-category/faq  - great for inspiration 
+https://www.tilebit.io/inspiration/team  - great for inspiration   
