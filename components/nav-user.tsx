@@ -41,6 +41,15 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar()
 
+  const handleLogout = () => {
+    // Set the logout token first
+    document.cookie = "logging_out=true; path=/";
+    // Clear the auth cookie
+    document.cookie = "design_prototype_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    // Reload the page to trigger re-authentication
+    window.location.href = '/logout';
+  };
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -102,7 +111,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
               Log out
             </DropdownMenuItem>

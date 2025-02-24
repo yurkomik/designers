@@ -1,25 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'raw.githubusercontent.com',
+  output: 'standalone',
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': ['@svgr/webpack'],
       },
-      {
-        protocol: 'https',
-        hostname: 'ui.aceternity.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'magicui.design',
-      },
-      {
-        protocol: 'https',
-        hostname: 'gluestack.io',
-      },
-    ],
+    },
   },
-}
+  devIndicators: {
+    position: 'bottom-right',
+  },
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig; 

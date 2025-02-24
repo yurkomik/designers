@@ -41,10 +41,81 @@ if [[ ! "$TERM_PROGRAM" == "vscode" ]] && [[ ! "$TERM_PROGRAM" == "cursor" ]]; t
     fi
 fi
 
-# Install Homebrew if not present
-install_homebrew() {
-    print_step "Installing Homebrew (if not installed)"
+# Check if we're in the repository directory
+if [[ ! -d ".git" ]]; then
+    print_error "Please run this script from the root of the design-system repository"
+    print_info "You can clone it with:"
+    echo "git clone https://github.com/your-org/design-system.git"
+    echo "cd design-system"
+    echo "./setup.sh"
+    exit 1
+fi
+
+# Install Node.js using nvm (Node Version Manager)
+install_node() {
+    print_step "Checking Node.js installation"
+    
+    # Check if Node.js is already installed and meets version requirements
+    if command -v node &> /dev/null; then
+        local current_version=$(node -v | cut -d 'v' -f2)
+        if [[ "$(printf '%s\n' "22.0.0" "$current_version" | sort -V | head -n1)" = "22.0.0" ]]; then
+            print_info "✓ Node.js $(node -v) is already installed and meets version requirements"
+            print_info "  - npm version: $(npm -v)"
+            if command -v nvm &> /dev/null; then
+                print_info "  - nvm current: $(nvm current)"
+            fi
+            return 0
+        else
+            print_warning "! Node.js $(node -v) is installed but version 22 or higher is required"
+        fi
+    fi
+    
+    # First try to install using nvm
+    if ! command -v nvm &> /dev/null; then
+        print_info "Installing nvm (Node Version Manager)..."
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        
+        # Source nvm without restarting the shell
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        
+        if ! command -v nvm &> /dev/null; then
+            print_error "Failed to install nvm"
+            print_warning "Installing Homebrew and Node.js as fallback..."
+            install_homebrew_if_needed
+            brew install node
+        fi
+    fi
+    
+    # If nvm is available, use it to install Node.js
+    if command -v nvm &> /dev/null; then
+        print_info "Installing Node.js v22 using nvm..."
+        nvm install 22
+        
+        # Verify installations
+        NODE_VERSION=$(node -v)
+        NPM_VERSION=$(npm -v)
+        NVM_CURRENT=$(nvm current)
+        
+        print_info "✓ Node.js installation complete:"
+        print_info "  - Node version: $NODE_VERSION"
+        print_info "  - npm version: $NPM_VERSION"
+        print_info "  - nvm current: $NVM_CURRENT"
+    else
+        # Verify Homebrew fallback installation
+        if command -v node &> /dev/null; then
+            print_info "✓ Node.js is installed via Homebrew fallback: $(node -v)"
+        else
+            print_error "Failed to install Node.js through any method"
+            exit 1
+        fi
+    fi
+}
+
+# Install Homebrew only if needed as fallback
+install_homebrew_if_needed() {
     if ! command -v brew &> /dev/null; then
+        print_step "Installing Homebrew as fallback"
         print_info "Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         
@@ -54,53 +125,6 @@ install_homebrew() {
             echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
             eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
-    else
-        print_info "✓ Homebrew is already installed"
-    fi
-}
-
-# Install Node.js using Homebrew
-install_node() {
-    print_step "Installing Node.js"
-    if ! command -v node &> /dev/null; then
-        print_info "Installing Node.js..."
-        brew install node
-    else
-        print_info "✓ Node.js is already installed: $(node -v)"
-    fi
-}
-
-# Install Git using Homebrew
-install_git() {
-    print_step "Installing Git"
-    if ! command -v git &> /dev/null; then
-        print_info "Installing Git..."
-        brew install git
-    else
-        print_info "✓ Git is already installed: $(git --version)"
-    fi
-}
-
-# Clone the repository
-clone_repo() {
-    print_step "Setting up the project"
-    
-    # Define the repository URL
-    REPO_URL="https://github.com/your-org/design-system.git"
-    
-    # Create a development directory if it doesn't exist
-    DEV_DIR="$HOME/Development"
-    mkdir -p "$DEV_DIR"
-    cd "$DEV_DIR"
-    
-    if [ ! -d "design-system" ]; then
-        print_info "Cloning the repository..."
-        git clone $REPO_URL
-        cd design-system
-    else
-        print_info "Repository already exists, updating..."
-        cd design-system
-        git pull
     fi
 }
 
@@ -119,10 +143,7 @@ main() {
     echo
     
     # Run installation steps
-    install_homebrew
     install_node
-    install_git
-    clone_repo
     install_dependencies
     
     # Setup complete
@@ -130,15 +151,6 @@ main() {
     print_info "🎉 Setup Complete!"
     print_info "=================="
     echo
-    print_info "To start development:"
-    echo "  cd ~/Development/design-system"
-    echo "  npm run dev"
-    echo
-    print_info "This will start:"
-    echo "  - Main app at: http://localhost:3000"
-    echo "  - Storybook at: http://localhost:6006"
-    echo
-    print_warning "Note: The first build might take a few minutes"
     
     # Offer to start the development environment
     echo
@@ -146,6 +158,14 @@ main() {
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         npm run dev
+    else
+        print_info "To start development later:"
+        echo "  npm run dev"
+        echo
+        print_info "This will start the app in your browser:"
+        echo "  -  CLICK HERE TO OPEN APP IN BROWSER: http://localhost:3000"
+        echo
+        print_warning "Note: The first build might take a few minutes"
     fi
 }
 

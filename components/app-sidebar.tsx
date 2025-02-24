@@ -67,20 +67,20 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "Colors",
-          url: "/theme/colors",
+          title: "Base Colors",
+          url: "/theme?tab=base",
         },
         {
-          title: "Typography",
-          url: "/theme/typography",
+          title: "Primary Colors",
+          url: "/theme?tab=primary",
         },
         {
-          title: "Spacing",
-          url: "/theme/spacing",
+          title: "Semantic Colors",
+          url: "/theme?tab=semantic",
         },
         {
-          title: "Effects",
-          url: "/theme/effects",
+          title: "Radius & Effects",
+          url: "/theme?tab=effects",
         },
       ],
     },

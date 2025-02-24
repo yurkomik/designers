@@ -7,21 +7,35 @@ A modern design system built with Next.js, Radix UI, and Storybook.
 ### Installation (Mac Only)
 
 1. **Install Cursor**
-   - Download Cursor from [cursor.sh](https://cursor.sh)
+   - Download Cursor from [cursor.com](https://www.cursor.com/downloads)
    - Open the downloaded file
    - Drag Cursor to your Applications folder
    - Open Cursor
 
-2. **Run Setup Script**
-   - Download our setup script: [setup.sh](setup.sh)
-   - Open Cursor's terminal (Cmd + J)
-   - Drag the setup.sh file into the terminal
-   - Press Enter
+2. **Create Project Directory**
+   - When Cursor opens, click "Open Folder" (or File → Open Folder)
+   - Navigate to your Documents folder
+   - Click "New Folder" and name it "design"
+   - Open this new folder in Cursor
+
+3. **Clone & Setup**
+   - Open Cursor's terminal with `Cmd + J`
+   - Run these commands:
+     ```bash
+     # Clone the repository
+     git clone https://github.com/your-org/design-system.git
+     
+     # Enter the project directory
+     cd design-system
+     
+     # Run the setup script
+     ./setup.sh
+     ```
 
 That's it! The script will:
-- Install all required tools (Homebrew, Node.js, Git)
+- Install Node.js and other tools in your home directory
 - Set up the project
-- Start the development environment
+- Offer to start the development environment
 
 ### 📚 What's Included
 
@@ -46,10 +60,10 @@ That's it! The script will:
 ## 🛠 Development
 
 ### Tech Stack
-- Next.js 15
+- Next.js 15.2
 - React 19
-- Radix UI
-- Tailwind CSS
+- Radix UI/Shadcn UI
+- Tailwind CSS 4.0.8
 - Storybook 8
 
 ### Available Scripts
@@ -59,6 +73,91 @@ That's it! The script will:
 - `npm start` - Start production server
 - `npm run storybook` - Start Storybook separately
 
-## 📝 License
+## 🔄 Version Control Setup
 
-[MIT](LICENSE)
+### First Time Git Setup
+
+1. **Create a GitHub Account**
+   - Visit [github.com](https://github.com) and sign up
+   - Verify your email address
+
+2. **Connect to GitHub**
+   - In Cursor, click the Accounts icon in the bottom left
+   - Click "Sign in with GitHub"
+   - Follow the browser prompts to authorize
+   - Cursor will automatically configure Git with your GitHub identity
+
+3. **Create Your Repository**
+   - Click "New Repository" on GitHub
+   - Name it "design-system" (or your preferred name)
+   - Keep it private if needed
+   - Don't initialize with README (we already have one)
+
+
+
+### Daily Git Workflow
+
+You can use Cursor's Git UI (recommended):
+- Source Control icon shows all changes
+- Type commit message and click ✓ commit and push from dropdown
+
+
+
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+1. **Prepare for Deployment**
+   - Create account at [vercel.com](https://vercel.com)
+   - connect your github account and select the design-system repository, click on the "Import" button, click on deploy 
+   - Enable automatic deployments
+   - Each push to main will trigger deployment
+   - PRs will get preview deployments
+
+
+   **Alternative method:**
+1. Install Vercel CLI:
+     ```bash
+     npm install -g vercel
+     ```
+
+2. **Link to Vercel**
+   ```bash
+   # Login to Vercel
+   vercel login
+   
+   # Link project
+   vercel link
+   ```
+
+3. **Deploy**
+   ```bash
+   # Deploy to preview
+   vercel
+   
+   # Deploy to production
+   vercel --prod
+   ```
+
+4. **Set Up Automatic Deployments**
+   - Connect your GitHub repository in Vercel dashboard
+   - Enable automatic deployments
+   - Each push to main will trigger deployment
+   - PRs will get preview deployments
+
+### Environment Variables
+
+Create a `.env.local` file:
+```bash
+NEXT_PUBLIC_API_URL=your-api-url
+# Add other environment variables
+```
+
+Add these in Vercel dashboard:
+1. Go to Project Settings → Environment Variables
+2. Add each variable from `.env.local`
+3. Redeploy if needed
+
+
+
+
