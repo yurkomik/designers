@@ -19,7 +19,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
    - Open this new folder in Cursor
 
 3. **Clone & Setup**
-   - Open Cursor's terminal with `Cmd + J`
+   - Open Cursor's terminal with `Cmd + J`, select "Terminal"
    - Paste in bulk all these commands into terminal:
      ```bash
      # Clone the repository
