@@ -29,6 +29,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
      cd designers
      
      # Run the setup script
+     chmod +x ./setup.sh
      ./setup.sh
      ```
 
