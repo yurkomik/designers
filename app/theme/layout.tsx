@@ -10,8 +10,8 @@ interface ThemeLayoutProps {
 export default function ThemeLayout({ children }: ThemeLayoutProps) {
   return (
     <div className="flex min-h-screen">
-      <AppSidebar />
-      <main className="flex-1 overflow-auto">{children}</main>
+      <AppSidebar className="w-64 flex-shrink-0" />
+      <main className="flex-1 p-6 overflow-auto">{children}</main>
     </div>
   )
 } 

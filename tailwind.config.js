@@ -16,39 +16,74 @@ module.exports = {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			sans: 'var(--font-family, sans-serif)',
+  		},
+  		fontSize: {
+  			base: 'var(--font-size-base, 1rem)',
+  		},
+  		lineHeight: {
+  			base: 'var(--line-height-base, 1.5)',
+  		},
+  		fontWeight: {
+  			normal: 'var(--font-weight-normal, 400)',
+  			medium: 'var(--font-weight-medium, 500)',
+  			semibold: 'var(--font-weight-semibold, 600)',
+  			bold: 'var(--font-weight-bold, 700)',
+  		},
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'var(--background)',
+  			foreground: 'var(--foreground)',
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'var(--primary)',
+  				foreground: 'var(--primary-foreground)'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: 'var(--secondary)',
+  				foreground: 'var(--secondary-foreground)'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: 'var(--accent)',
+  				foreground: 'var(--accent-foreground)'
   			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  			muted: {
+  				DEFAULT: 'var(--muted)',
+  				foreground: 'var(--muted-foreground)'
   			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'var(--card)',
+  				foreground: 'var(--card-foreground)'
+  			},
+  			popover: {
+  				DEFAULT: 'var(--popover)',
+  				foreground: 'var(--popover-foreground)'
+  			},
+  			destructive: {
+  				DEFAULT: 'var(--error)',
+  				foreground: 'var(--error-foreground)'
+  			},
+  			info: {
+  				DEFAULT: 'var(--info)',
+  				foreground: 'var(--info-foreground)'
+  			},
+  			success: {
+  				DEFAULT: 'var(--success)',
+  				foreground: 'var(--success-foreground)'
+  			},
+  			warning: {
+  				DEFAULT: 'var(--warning)',
+  				foreground: 'var(--warning-foreground)'
+  			},
+  			error: {
+  				DEFAULT: 'var(--error)',
+  				foreground: 'var(--error-foreground)'
+  			},
+  			neutral: {
+  				DEFAULT: 'var(--neutral)',
+  				foreground: 'var(--neutral-foreground)'
   			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
@@ -62,9 +97,26 @@ module.exports = {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: 'var(--radius-boxes)',
+  			md: 'var(--radius-fields)',
+  			sm: 'var(--radius-selectors)'
+  		},
+  		borderWidth: {
+  			DEFAULT: 'var(--border-width, 1px)',
+  		},
+  		boxShadow: {
+  			depth: 'var(--shadow-light)',
+  			sm: 'var(--shadow-sm)',
+  			DEFAULT: 'var(--shadow)',
+  			md: 'var(--shadow-md)',
+  			lg: 'var(--shadow-lg)',
+  			xl: 'var(--shadow-xl)',
+  			'2xl': 'var(--shadow-2xl)',
+  			inner: 'var(--shadow-inner)',
+  			none: 'var(--shadow-none)',
+  		},
+  		backgroundImage: {
+  			noise: "url('/noise.png')",
   		},
   		keyframes: {
   			'accordion-down': {

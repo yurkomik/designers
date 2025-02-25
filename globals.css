@@ -1,0 +1,14 @@
+/* Apply effects conditionally */
+html[data-depth-effect="1"] .auto-depth {
+  box-shadow: var(--shadow-md, var(--shadow-light));
+}
+
+/* Auto depth for cards, making them more prominent */
+html[data-depth-effect="1"] [data-slot="card"] {
+  box-shadow: var(--shadow-md, var(--shadow-light));
+}
+
+html[data-noise-effect="1"] .auto-noise {
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+} 
