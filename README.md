@@ -75,10 +75,10 @@ That's it! The script will:
 ## 🛠 Development
 
 ### Tech Stack
-- Next.js 15.2
-- React 19
+- Next.js 14.1
+- React 18
 - Radix UI/Shadcn UI
-- Tailwind CSS 4.0.8
+- Tailwind CSS 3
 - Storybook 8
 
 ### Available Scripts
