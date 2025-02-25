@@ -9,14 +9,15 @@ if (!CORRECT_PASSWORD) {
 
 const AUTH_TOKEN = 'design_prototype_auth';
 const LOGOUT_TOKEN = 'logging_out';
+const SESSION_ID = 'auth_session_id';
 
 // Simple hash function for cookie value
 const hashPassword = (pwd: string) => {
   return Buffer.from(pwd + AUTH_TOKEN).toString('base64');
 };
 
-// Generate a random challenge string
-const generateChallenge = () => {
+// Generate a random session ID
+const generateSessionId = () => {
   return Math.random().toString(36).substring(2);
 };
 
@@ -34,16 +35,19 @@ export function middleware(request: NextRequest) {
   // Check if we're logging out
   const logoutCookie = request.cookies.get(LOGOUT_TOKEN);
   if (logoutCookie) {
-    // Clear both cookies and force re-authentication with a new challenge
-    const challenge = generateChallenge();
+    // Generate a new session ID to invalidate saved browser credentials
+    const newSessionId = generateSessionId();
+    
+    // Clear both cookies and force re-authentication with a new session ID in realm
     const response = new NextResponse(null, {
       status: 401,
       headers: {
-        'WWW-Authenticate': `Basic realm="Password required (${challenge})"`,
+        'WWW-Authenticate': `Basic realm="Password required (${newSessionId})"`,
       },
     });
     response.cookies.delete(AUTH_TOKEN);
     response.cookies.delete(LOGOUT_TOKEN);
+    response.cookies.set(SESSION_ID, newSessionId, { path: '/' });
     return response;
   }
 
@@ -79,12 +83,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If no valid auth, prompt for password with a new challenge
-  const challenge = generateChallenge();
+  // If no valid auth, prompt for password with current session ID
+  const sessionId = request.cookies.get(SESSION_ID)?.value || generateSessionId();
   return new NextResponse(null, {
     status: 401,
     headers: {
-      'WWW-Authenticate': `Basic realm="Password required (${challenge})"`,
+      'WWW-Authenticate': `Basic realm="Password required (${sessionId})"`,
     },
   });
 }
