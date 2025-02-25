@@ -20,7 +20,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
 
 3. **Clone & Setup**
    - Open Cursor's terminal with `Cmd + J`
-   - Run these commands:
+   - Paste in bulk all these commands into terminal:
      ```bash
      # Clone the repository
      git clone https://github.com/yurkomik/designers.git
@@ -32,13 +32,15 @@ A modern design system built with Next.js, Radix UI, and Storybook.
      chmod +x ./setup.sh
      ./setup.sh
      ```
+ - Click Enter
 
-     answer yes to start dev environment
-
-
-   4. **Set Password**
+ 4. **Set Password**
     - rename file env.local to .env.local 
     - open this file and set Password youd like to use 
+
+
+    - Answer yes to start dev environment
+    - go to http://localhost:3000/playground/weather-widget to test the app
 
     you may want to reopen cursor and open design folder so you will not need to navigate into it. 
 
