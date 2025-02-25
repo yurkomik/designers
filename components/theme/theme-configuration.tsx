@@ -12,7 +12,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown, ChevronRight, PaintBucket, CircleDashed, Maximize, Settings, Palette, Layers, Type, Library } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { getAllThemes } from "@/lib/theme-registry"
-import { Theme } from "@/lib/theme-types"
+import { Theme, PanelBackgroundType } from "@/lib/theme-types"
 
 export function ThemeConfiguration() {
   const {
@@ -30,6 +30,10 @@ export function ThemeConfiguration() {
     setDarkColorScheme,
     currentTheme,
     setCurrentTheme,
+    scaling,
+    setScaling,
+    panelBackground,
+    setPanelBackground,
     saveTheme,
     exportTheme,
     importTheme,
@@ -144,6 +148,21 @@ export function ThemeConfiguration() {
     { value: 2, label: "2px" }
   ]
 
+  // Define scaling options
+  const scalingOptions = [
+    { value: "90%", label: "90%" },
+    { value: "95%", label: "95%" },
+    { value: "100%", label: "100%" },
+    { value: "105%", label: "105%" },
+    { value: "110%", label: "110%" }
+  ]
+
+  // Define panel background options
+  const panelBackgroundOptions = [
+    { value: "solid", label: "Solid" },
+    { value: "translucent", label: "Translucent" }
+  ]
+
   // Sample font families
   const fontFamilies = [
     { value: "Geist Sans", label: "Geist Sans" },
@@ -208,177 +227,57 @@ export function ThemeConfiguration() {
 
             <Separator className="my-2" />
 
-            {/* Appearance Section (Radius & Border Width) */}
+            {/* Appearance Section */}
             <CollapsibleSection 
-              title="Shape" 
-              icon={<CircleDashed className="h-4 w-4" />}
+              title="Appearance" 
+              icon={<Palette className="h-4 w-4" />}
               isOpen={openSections.appearance}
               onToggle={() => toggleSection('appearance')}
             >
               <div className="space-y-4">
-                {/* Radius Controls - Combined into tabs */}
-                <div>
-                  <Label className="text-sm mb-2 block">Border Radius</Label>
-                  <div className="space-y-3">
-                    <RadiusControl 
-                      title="Boxes" 
-                      description="card, modal, alert"
-                      options={radiusOptions}
-                      value={radius.boxes}
-                      onChange={(value) => setRadius({ ...radius, boxes: value })}
-                    />
-                    
-                    <RadiusControl 
-                      title="Fields" 
-                      description="button, input, select"
-                      options={radiusOptions}
-                      value={radius.fields}
-                      onChange={(value) => setRadius({ ...radius, fields: value })}
-                    />
-                    
-                    <RadiusControl 
-                      title="Controls" 
-                      description="checkbox, toggle, badge"
-                      options={radiusOptions}
-                      value={radius.selectors}
-                      onChange={(value) => setRadius({ ...radius, selectors: value })}
-                    />
-                  </div>
-                </div>
-
-                <Separator className="my-2" />
-
-                {/* Border Width */}
-                <div>
-                  <Label className="text-sm mb-2 block">Border Width</Label>
-                  <div className="grid grid-cols-4 gap-2">
-                    {borderWidthOptions.map((option) => (
+                {/* Scaling */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Scaling</Label>
+                  <div className="grid grid-cols-5 gap-2">
+                    {scalingOptions.map((option) => (
                       <button
                         key={option.value}
-                        onClick={() => setBorderWidth(option.value)}
                         className={cn(
-                          "relative flex flex-col items-center justify-center h-14 bg-background rounded-md transition-colors",
-                          borderWidth === option.value ? "border-primary" : "border-muted hover:border-primary/50"
+                          "flex items-center justify-center py-2 px-3 rounded-md border text-sm",
+                          scaling === option.value ? "border-primary bg-primary/10" : "border-muted"
                         )}
-                        style={{
-                          borderWidth: `${option.value}px`,
-                          borderStyle: "solid"
-                        }}
+                        onClick={() => setScaling(option.value)}
                       >
-                        <span className="text-xs text-muted-foreground">
-                          {option.label}
-                        </span>
+                        {option.label}
                       </button>
                     ))}
                   </div>
                 </div>
-              </div>
-            </CollapsibleSection>
-
-            <Separator className="my-2" />
-
-            {/* Typography Section */}
-            <CollapsibleSection 
-              title="Typography" 
-              icon={<Type className="h-4 w-4" />}
-              isOpen={openSections.typography}
-              onToggle={() => toggleSection('typography')}
-            >
-              <div className="space-y-4">
-                <div>
-                  <Label className="text-sm mb-2 block">Font Family</Label>
-                  <Select value={fontFamily} onValueChange={setFontFamily}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select font family" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {fontFamilies.map((font) => (
-                        <SelectItem key={font.value} value={font.value}>
-                          {font.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
                 
+                {/* Panel Background */}
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <Label className="text-sm">Base Font Size</Label>
-                    <span className="text-xs font-mono">{baseFontSize}px</span>
+                  <div className="flex items-center justify-between">
+                    <Label className="text-sm font-medium">Panel background</Label>
+                    <div className="text-xs text-muted-foreground">
+                      <span className="inline-flex items-center">
+                        <CircleDashed className="h-3 w-3 mr-1" />
+                        Info
+                      </span>
+                    </div>
                   </div>
-                  <Slider 
-                    value={[baseFontSize]} 
-                    min={12} 
-                    max={24} 
-                    step={1} 
-                    onValueChange={(values) => setBaseFontSize(values[0])}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <Label className="text-sm">Type Scale</Label>
-                    <span className="text-xs font-mono">{fontScale.toFixed(2)}</span>
-                  </div>
-                  <Slider 
-                    value={[fontScale * 100]} 
-                    min={100} 
-                    max={150} 
-                    step={5} 
-                    onValueChange={(values) => setFontScale(values[0] / 100)}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <Label className="text-sm">Line Height</Label>
-                    <span className="text-xs font-mono">{lineHeight.toFixed(2)}</span>
-                  </div>
-                  <Slider 
-                    value={[lineHeight * 100]} 
-                    min={100} 
-                    max={200} 
-                    step={5} 
-                    onValueChange={(values) => setLineHeight(values[0] / 100)}
-                  />
-                </div>
-                
-                <Separator className="my-2" />
-                
-                <div>
-                  <Label className="text-sm mb-2 block">Font Weights</Label>
-                  <div className="space-y-3">
-                    {Object.entries(fontWeights).map(([weight, value]) => (
-                      <div key={weight} className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <Label className="text-xs capitalize">{weight}</Label>
-                          <span className="text-xs font-mono">{value}</span>
-                        </div>
-                        <Slider 
-                          value={[value]} 
-                          min={100} 
-                          max={900} 
-                          step={100} 
-                          onValueChange={(values) => setFontWeights({...fontWeights, [weight]: values[0]})}
-                        />
-                      </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {panelBackgroundOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        className={cn(
+                          "flex items-center justify-center py-5 px-3 rounded-md border text-sm",
+                          panelBackground === option.value ? "border-primary bg-primary/10" : "border-muted"
+                        )}
+                        onClick={() => setPanelBackground(option.value as PanelBackgroundType)}
+                      >
+                        {option.label}
+                      </button>
                     ))}
-                  </div>
-                </div>
-                
-                <div className="mt-4 p-3 bg-muted/30 rounded-md">
-                  <h3 className="text-sm font-medium mb-2">Preview</h3>
-                  <div className="space-y-2">
-                    <p className="text-2xl" style={{ 
-                      fontFamily, 
-                      fontWeight: fontWeights.bold,
-                      lineHeight: lineHeight.toString()
-                    }}>Heading Text</p>
-                    <p className="text-base" style={{ 
-                      fontFamily, 
-                      fontWeight: fontWeights.normal,
-                      lineHeight: lineHeight.toString() 
-                    }}>This is a paragraph of text that demonstrates how the typography settings affect the appearance of body text in your application.</p>
                   </div>
                 </div>
               </div>

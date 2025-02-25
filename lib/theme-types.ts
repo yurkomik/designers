@@ -39,6 +39,8 @@ export interface ThemeShadows {
 
 export type ThemeType = 'official' | 'community' | 'custom';
 
+export type PanelBackgroundType = 'solid' | 'translucent';
+
 export interface Theme {
   id: string;
   name: string;
@@ -61,6 +63,8 @@ export interface Theme {
   };
   shadows?: ThemeShadows;
   customCss?: string; // For advanced theme customizations
+  scaling?: string; // UI scaling percentage
+  panelBackground?: PanelBackgroundType; // Panel background type
 }
 
 export interface ThemeContextType {
@@ -78,6 +82,10 @@ export interface ThemeContextType {
   setDefaultDarkTheme: (value: boolean) => void;
   darkColorScheme: boolean;
   setDarkColorScheme: (value: boolean) => void;
+  scaling: string;
+  setScaling: (value: string) => void;
+  panelBackground: PanelBackgroundType;
+  setPanelBackground: (value: PanelBackgroundType) => void;
   saveTheme: () => void;
   exportTheme: () => string;
   importTheme: (themeJson: string) => void;

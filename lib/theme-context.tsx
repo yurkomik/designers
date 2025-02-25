@@ -5,7 +5,8 @@ import {
   Theme, 
   ThemeColors, 
   ThemeContextType, 
-  ThemeRadius
+  ThemeRadius,
+  PanelBackgroundType
 } from "@/lib/theme-types";
 import { 
   getAllThemes, 
@@ -33,6 +34,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [defaultTheme, setDefaultTheme] = React.useState(false);
   const [defaultDarkTheme, setDefaultDarkTheme] = React.useState(false);
   const [darkColorScheme, setDarkColorScheme] = React.useState(false);
+  const [scaling, setScaling] = React.useState<string>(currentTheme.scaling || "100%");
+  const [panelBackground, setPanelBackground] = React.useState<PanelBackgroundType>(currentTheme.panelBackground || "solid");
 
   // Set the current theme, updating all related state
   const setCurrentTheme = (theme: Theme) => {
@@ -40,6 +43,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setColors(theme.colors);
     setRadius(theme.radius);
     setBorderWidth(theme.borderWidth);
+    setScaling(theme.scaling || "100%");
+    setPanelBackground(theme.panelBackground || "solid");
     
     // Apply the theme to CSS variables
     applyThemeToCssVariables(theme);
@@ -60,7 +65,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       borderWidth,
       fontFamily: "Inter, system-ui, sans-serif", // Default or from state
       type: "custom",
-      isDark: darkColorScheme
+      isDark: darkColorScheme,
+      scaling,
+      panelBackground
     };
     
     // Add to custom themes and select it
@@ -79,7 +86,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       borderWidth,
       fontFamily: "Inter, system-ui, sans-serif", // Default or from state
       type: "custom",
-      isDark: darkColorScheme
+      isDark: darkColorScheme,
+      scaling,
+      panelBackground
     };
     
     return JSON.stringify(themeToExport, null, 2);
@@ -158,6 +167,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Apply border width
     root.style.setProperty('--border-width', `${theme.borderWidth}px`);
+    
+    // Apply scaling
+    root.style.setProperty('--ui-scaling', theme.scaling || "100%");
+    
+    // Apply panel background type
+    root.style.setProperty('--panel-background', theme.panelBackground || "solid");
     
     // Apply typography if available
     if (theme.fontFamily) {
@@ -247,7 +262,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Apply border width
     root.style.setProperty('--border-width', `${borderWidth}px`);
     
-  }, [colors, radius, borderWidth]);
+    // Apply scaling
+    root.style.setProperty('--ui-scaling', scaling);
+    
+    // Apply panel background type
+    root.style.setProperty('--panel-background', panelBackground);
+    
+  }, [colors, radius, borderWidth, scaling, panelBackground]);
   
   // Helper to get contrasting color for text
   const getContrastColor = (bgColor: string): string => {
@@ -278,6 +299,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setDefaultDarkTheme,
     darkColorScheme,
     setDarkColorScheme,
+    scaling,
+    setScaling,
+    panelBackground,
+    setPanelBackground,
     saveTheme,
     exportTheme,
     importTheme,
