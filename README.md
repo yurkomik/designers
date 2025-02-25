@@ -23,14 +23,27 @@ A modern design system built with Next.js, Radix UI, and Storybook.
    - Run these commands:
      ```bash
      # Clone the repository
-     git clone https://github.com/yurkomik/disign.git
+     git clone https://github.com/yurkomik/design.git
      
      # Enter the project directory
-     cd disign
-     
+     cd design
+      
+     # make script executable 
+     chmod +x ./setup.sh
      # Run the setup script
      ./setup.sh
      ```
+
+     answer yes to start dev environment
+
+
+   4. **Set Password**
+    - rename file env.local to .env.local 
+    - open this file and set Password youd like to use 
+
+    you may want to reopen cursor and open design folder so you will not need to navigate into it. 
+
+
 
 That's it! The script will:
 - Install Node.js and other tools in your home directory
