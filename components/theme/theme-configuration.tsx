@@ -227,12 +227,81 @@ export function ThemeConfiguration() {
 
             <Separator className="my-2" />
 
-            {/* Appearance Section */}
+            {/* Appearance Section (Radius & Border Width) */}
+            <CollapsibleSection 
+              title="Shape" 
+              icon={<CircleDashed className="h-4 w-4" />}
+              isOpen={openSections.appearance}
+              onToggle={() => toggleSection('appearance')}
+            >
+              <div className="space-y-4">
+                {/* Radius Controls - Combined into tabs */}
+                <div>
+                  <Label className="text-sm mb-2 block">Border Radius</Label>
+                  <div className="space-y-3">
+                    <RadiusControl 
+                      title="Boxes" 
+                      description="card, modal, alert"
+                      options={radiusOptions}
+                      value={radius.boxes}
+                      onChange={(value) => setRadius({ ...radius, boxes: value })}
+                    />
+                    
+                    <RadiusControl 
+                      title="Fields" 
+                      description="button, input, select"
+                      options={radiusOptions}
+                      value={radius.fields}
+                      onChange={(value) => setRadius({ ...radius, fields: value })}
+                    />
+                    
+                    <RadiusControl 
+                      title="Controls" 
+                      description="checkbox, toggle, badge"
+                      options={radiusOptions}
+                      value={radius.selectors}
+                      onChange={(value) => setRadius({ ...radius, selectors: value })}
+                    />
+                  </div>
+                </div>
+
+                <Separator className="my-2" />
+
+                {/* Border Width */}
+                <div>
+                  <Label className="text-sm mb-2 block">Border Width</Label>
+                  <div className="grid grid-cols-4 gap-2">
+                    {borderWidthOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => setBorderWidth(option.value)}
+                        className={cn(
+                          "relative flex flex-col items-center justify-center h-14 bg-background rounded-md transition-colors",
+                          borderWidth === option.value ? "border-primary" : "border-muted hover:border-primary/50"
+                        )}
+                        style={{
+                          borderWidth: `${option.value}px`,
+                          borderStyle: "solid"
+                        }}
+                      >
+                        <span className="text-xs text-muted-foreground">
+                          {option.label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CollapsibleSection>
+
+            <Separator className="my-2" />
+
+            {/* UI Scaling & Panel Background Section */}
             <CollapsibleSection 
               title="Appearance" 
               icon={<Palette className="h-4 w-4" />}
-              isOpen={openSections.appearance}
-              onToggle={() => toggleSection('appearance')}
+              isOpen={openSections.sizes}
+              onToggle={() => toggleSection('sizes')}
             >
               <div className="space-y-4">
                 {/* Scaling */}
