@@ -160,13 +160,7 @@ You can use Cursor's Git UI (recommended):
    - Each push to main will trigger deployment
    - PRs will get preview deployments
 
-### Environment Variables
 
-Create a `.env.local` file:
-```bash
-NEXT_PUBLIC_API_URL=your-api-url
-# Add other environment variables
-```
 
 Add these in Vercel dashboard:
 1. Go to Project Settings → Environment Variables
