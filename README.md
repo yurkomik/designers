@@ -23,10 +23,10 @@ A modern design system built with Next.js, Radix UI, and Storybook.
    - Run these commands:
      ```bash
      # Clone the repository
-     git clone https://github.com/yurkomik/disigners.git
+     git clone https://github.com/yurkomik/designers.git
      
      # Enter the project directory
-     cd disigners
+     cd designers
      
      # Run the setup script
      ./setup.sh
