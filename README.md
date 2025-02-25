@@ -35,7 +35,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
  - Click Enter
 
  4. **Set Password**
-    - rename file env.local to .env.local 
+    - in the left sidebar you will see file explorer, rename file env.local to .env.local (right click menu)
     - open this file and set Password youd like to use 
 
 
@@ -43,6 +43,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
     - go to http://localhost:3000/playground/weather-widget to test the app
 
     you may want to reopen cursor and open design folder so you will not need to navigate into it. 
+    Now you are ready to edit playground pages in Chat. Ask Curor to make changes, implement other content, etc. Check resources for other components you may want to install. 
 
 
 
