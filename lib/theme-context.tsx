@@ -124,7 +124,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Apply colors
     Object.entries(theme.colors).forEach(([key, value]) => {
       // Handle special case for border, ring and other colors that need HSL format
-      if (key === 'border' || key === 'ring' || key === 'input') {
+      if (key === 'border' || key === 'card-border' || key === 'ring' || key === 'input') {
         // Extract HSL values from the string and set them in the ShadCN format
         const match = value.match(/hsl\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)%\s*,\s*(\d+(?:\.\d+)?)%\s*\)/);
         if (match) {

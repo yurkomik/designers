@@ -57,6 +57,10 @@ const data = {
         {
           title: "Page 2",
           url: "/playground/page2",
+        },
+        {
+          title: "Weather Widget",
+          url: "/playground/weather-widget",
         }
       ],
     },

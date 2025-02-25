@@ -15,6 +15,8 @@ export const officialThemes: Theme[] = [
       success: "hsl(142.1, 76.2%, 36.3%)",
       warning: "hsl(47.9, 95.8%, 53.1%)",
       error: "hsl(346.8, 77.2%, 49.8%)",
+      border: "hsl(220, 13%, 91%)",
+      "card-border": "hsl(220, 13%, 91%)",
     },
     radius: {
       boxes: "0.5rem",
@@ -39,6 +41,8 @@ export const officialThemes: Theme[] = [
       success: "hsl(142.1, 70.6%, 45.3%)",
       warning: "hsl(47.9, 95.8%, 53.1%)",
       error: "hsl(346.8, 77.2%, 49.8%)",
+      border: "hsl(240, 3.7%, 15.9%)",
+      "card-border": "hsl(240, 3.7%, 15.9%)",
     },
     radius: {
       boxes: "0.5rem",
@@ -63,6 +67,8 @@ export const officialThemes: Theme[] = [
       success: "hsl(142.1, 76.2%, 36.3%)",
       warning: "hsl(47.9, 95.8%, 53.1%)",
       error: "hsl(346.8, 77.2%, 49.8%)",
+      border: "hsl(338, 69.5%, 93.5%)",
+      "card-border": "hsl(338, 69.5%, 93.5%)",
     },
     radius: {
       boxes: "0.75rem",
@@ -87,6 +93,8 @@ export const officialThemes: Theme[] = [
       success: "hsl(142.1, 76.2%, 36.3%)",
       warning: "hsl(47.9, 95.8%, 53.1%)",
       error: "hsl(346.8, 77.2%, 49.8%)",
+      border: "hsl(210, 40%, 96.1%)",
+      "card-border": "hsl(210, 40%, 96.1%)",
     },
     radius: {
       boxes: "0.375rem",
@@ -111,6 +119,8 @@ export const officialThemes: Theme[] = [
       success: "hsl(142.1, 76.2%, 36.3%)",
       warning: "hsl(47.9, 95.8%, 53.1%)",
       error: "hsl(346.8, 77.2%, 49.8%)",
+      border: "hsl(0, 0%, 96.1%)",
+      "card-border": "hsl(0, 0%, 96.1%)",
     },
     radius: {
       boxes: "0.25rem",
