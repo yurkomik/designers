@@ -23,10 +23,10 @@ A modern design system built with Next.js, Radix UI, and Storybook.
    - Run these commands:
      ```bash
      # Clone the repository
-     git clone https://github.com/your-org/design-system.git
+     git clone https://github.com/yurkomik/disign.git
      
      # Enter the project directory
-     cd design-system
+     cd disign
      
      # Run the setup script
      ./setup.sh
