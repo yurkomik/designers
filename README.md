@@ -13,7 +13,7 @@ A modern design system built with Next.js, Radix UI, and Storybook.
    - Open Cursor
 
 2. **Create Project Directory**
-   - When Cursor opens, click "Open Folder" (or File → Open Folder)
+   - When Cursor opens, click "Open Project" (or File → Open Project)
    - Navigate to your Documents folder
    - Click "New Folder" and name it "design"
    - Open this new folder in Cursor
